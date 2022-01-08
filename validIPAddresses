@@ -1,0 +1,33 @@
+# O(1) time, size of input is at most 12. 2^32 IP addresses at the most
+# O(1) space 
+def validIPAddresses(string):
+	#string = '.'.join(string)
+	ipAddressFound = [] # solution/result
+	for i in range(1, min(len(string), 4)):
+		currentIPAddressParts = ["", "", "", ""]
+		currentIPAddressParts[0] = string[:i] # 1st part
+		print(currentIPAddressParts[0])
+		if not isValidPart(currentIPAddressParts[0]):
+			continue # if 1st part is invalid, continue with next iteration of i
+		
+		for j in range(i + 1, min(len(string), i + 4)): i+1 to i+3
+			currentIPAddressParts[1] = string[i:j]
+			if not isValidPart(currentIPAddressParts[1]):
+				continue
+			
+			for k in range(j + 1, min(len(string), j + 4)):
+				currentIPAddressParts[2] = string[j:k]
+				currentIPAddressParts[3] = string[k:]
+			
+				if isValidPart(currentIPAddressParts[2]) and isValidPart(currentIPAddressParts[3]):
+					ipAddressFound.append('.'.join(currentIPAddressParts))
+		
+    return ipAddressFound
+
+
+def isValidPart(string):
+	stringAsInt =int(string)
+	if stringAsInt > 255:
+		return False
+	
+	return len(string) == len(str(stringAsInt))
