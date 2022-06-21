@@ -1,6 +1,6 @@
 # 3. Longest Substring Without Repeating Characters
 
-# O(N * 2) time | O(1) space
+# O(N) time | O(1) space
 
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
